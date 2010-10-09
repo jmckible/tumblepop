@@ -4,7 +4,7 @@ class AskMailerTest < ActionMailer::TestCase
   setup { @ask = asks(:jordan_worried) }
   
   test 'deliver ask' do
-    email = AskMailer.inquery @ask
+    email = AskMailer.inquiry @ask
     email.deliver
     assert !ActionMailer::Base.deliveries.empty?
     

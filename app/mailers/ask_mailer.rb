@@ -1,6 +1,6 @@
 class AskMailer < ActionMailer::Base
     
-  def inquery(ask)
+  def inquiry(ask)
     @ask  = ask
     @user = ask.user
     @question = ask.question
