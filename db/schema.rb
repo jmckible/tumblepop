@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101009094522) do
+ActiveRecord::Schema.define(:version => 20101009100058) do
+
+  create_table "questions", :force => true do |t|
+    t.string   "permalink"
+    t.text     "prompt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["permalink"], :name => "index_questions_on_permalink"
 
   create_table "users", :force => true do |t|
     t.string   "email"
