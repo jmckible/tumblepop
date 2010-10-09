@@ -40,6 +40,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.15)
+    mysql (2.8.1)
     permalink_fu (1.0.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -61,7 +62,6 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    sqlite3-ruby (1.2.4)
     thor (0.14.0)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -72,6 +72,6 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  mysql
   permalink_fu
   rails (= 3.0.0)
-  sqlite3-ruby
