@@ -7,6 +7,7 @@ gem 'rails', '3.0.0'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+gem 'haml'
 gem 'permalink_fu'
 
 # Use unicorn as the web server
