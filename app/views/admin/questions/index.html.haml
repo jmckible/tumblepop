@@ -1,1 +1,12 @@
 %h1 Questions
+
+%p= link_to 'New Question', new_admin_question_path
+
+%table
+  %tr
+    %th Prompt
+  - for question in @questions
+    %tr
+      %td= link_to question.prompt, [:admin, question]
+      
+= will_paginate @questions

@@ -1,0 +1,9 @@
+%h1= @question.prompt
+
+= error_messages_for :question
+
+= form_for [:admin, @question] do |f|
+  = render f
+  %p= f.submit 'Update'
+  
+%p= link_to 'Back', admin_questions_path
