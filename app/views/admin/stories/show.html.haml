@@ -1,0 +1,14 @@
+%h1= @story.title
+
+%p
+  By:
+  = link_to @story.user.name, [:admin, @story.user]
+
+= form_for [:admin, @story] do |f|
+  %p Title
+  %p= f.text_field :title
+  %p Permalink
+  %p= f.text_field :permalink
+  %p Body
+  %p= f.text_area :body
+  %p= f.submit 'Update'

@@ -1,6 +1,8 @@
 Tumblepop::Application.routes.draw do
   namespace :admin do
     resources :questions
+    resources :stories
+    resources :users
   end
   
   # The priority is based upon order of creation:

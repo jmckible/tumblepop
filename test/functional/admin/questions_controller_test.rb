@@ -42,7 +42,7 @@ class Admin::QuestionsControllerTest < ActionController::TestCase
   test '/admin/questions/:id with invalid params and PUT' do
     question = questions(:worried)
     put :update, :id=>question.to_param, :question=>{:prompt=>''}
-    assert_not_equal 'updated', question.prompt
+    assert_not_equal '', question.prompt
     assert_response :success
     assert_template :show
   end
