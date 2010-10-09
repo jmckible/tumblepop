@@ -1,8 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def self.up
     create_table :questions do |t|
-      t.string :permalink
-      t.text :prompt
+      t.string :permalink, :prompt
       t.timestamps
     end
     
