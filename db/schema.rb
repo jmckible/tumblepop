@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101009182119) do
+ActiveRecord::Schema.define(:version => 20101009183151) do
 
   create_table "asks", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(:version => 20101009182119) do
   end
 
   add_index "questions", ["permalink"], :name => "index_questions_on_permalink"
+
+  create_table "stories", :force => true do |t|
+    t.integer  "ask_id"
+    t.string   "permalink"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stories", ["ask_id"], :name => "index_stories_on_ask_id"
+  add_index "stories", ["permalink"], :name => "index_stories_on_permalink"
 
   create_table "users", :force => true do |t|
     t.string   "email"
