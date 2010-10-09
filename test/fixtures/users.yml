@@ -1,0 +1,12 @@
+admin:
+  email: admin@tumblepop.com
+  name: Admin
+  admin: true
+  password_hash: <%= User.encrypt 'password', 'salt' %>
+  password_salt: salt
+  
+jordan:
+  email: jordan@mckible.com
+  name: Jordan McKible
+  password_hash: <%= User.encrypt 'password', 'salt' %>
+  password_salt: salt
