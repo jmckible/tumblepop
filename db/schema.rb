@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101009100058) do
+ActiveRecord::Schema.define(:version => 20101009182119) do
+
+  create_table "asks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asks", ["question_id"], :name => "index_asks_on_question_id"
+  add_index "asks", ["secret"], :name => "index_asks_on_secret"
+  add_index "asks", ["user_id"], :name => "index_asks_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.string   "permalink"
