@@ -1,5 +1,6 @@
 Tumblepop::Application.routes.draw do
   namespace :admin do
+    resources :asks
     resources :questions
     resources :stories
     

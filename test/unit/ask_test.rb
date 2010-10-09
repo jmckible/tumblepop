@@ -15,6 +15,10 @@ class AskTest < ActiveSupport::TestCase
     assert_equal questions(:worried), @ask.question
   end
   
+  test 'has many stories' do
+    assert_equal 1, @ask.stories.count
+  end
+  
   test 'create secret hash' do
     ask = Ask.new :user=>users(:admin), :question=>questions(:worried)
     ask.valid?

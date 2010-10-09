@@ -1,17 +1,39 @@
 %h1= @user.name
 
-%p
-  %strong Administrator:
-  = link_to (@user.admin? ? 'Yes' : 'No'), [:toggle_admin, :admin, @user], :method=>:put
-
-= form_for [:admin, @user] do |f|
-  = render f
-  %p= f.submit 'Update'
+= section 'Asks' do
+  %p
+    %strong Asks:
+    = number_with_delimiter @user.asks.count
+  %ul
+    - for ask in @user.asks
+      %li= link_to ask.question.prompt, [:admin, ask.question]
+  = form_for [:admin, @user.asks.build] do |f|
+    = f.hidden_field :user_id
+    %p Ask:
+    %p= f.collection_select :question_id, Question.all, :id, :prompt, :include_blank=>true
+    %p= f.submit 'Ask'
   
-%h2 New Password
-= form_for [:admin, @user] do |f|
-  %p New Password
-  %p= f.text_field :password
-  %p Confirm New Password
-  %p= f.text_field :password_confirmation
-  %p= f.submit 'Change Password'
+  
+= section 'Stories' do
+  %p
+    %strong Stories:
+    = number_with_delimiter @user.stories.count
+  = render :partial=>'admin/stories/stories', :object=>@user.stories
+
+
+= section 'Settings' do
+  %p
+    %strong Administrator:
+    = link_to (@user.admin? ? 'Yes' : 'No'), [:toggle_admin, :admin, @user], :method=>:put
+
+  = form_for [:admin, @user] do |f|
+    = render f
+    %p= f.submit 'Update'
+  
+  %h2 New Password
+  = form_for [:admin, @user] do |f|
+    %p New Password
+    %p= f.text_field :password
+    %p Confirm New Password
+    %p= f.text_field :password_confirmation
+    %p= f.submit 'Change Password'

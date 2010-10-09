@@ -14,6 +14,8 @@ class Ask < ActiveRecord::Base
   belongs_to :question
   belongs_to :user
   
+  has_many :stories
+  
   before_validation :on=>:create do
     self.secret = Ask.generate_secret
   end

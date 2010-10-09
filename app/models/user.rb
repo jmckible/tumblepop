@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   
-  attr_accessor  :password
-  
+  #############################################################################
+  #                         C L A S S    M E T H O D S                        #
+  #############################################################################
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
     person = self.find_by_email email
@@ -22,7 +23,17 @@ class User < ActiveRecord::Base
     end
     password
   end
-        
+  
+  #############################################################################
+  #                          R E L A T I O N S H I P S                        #
+  #############################################################################
+  has_many :asks
+  has_many :stories, :through=>:asks
+  
+  #############################################################################
+  #                              P A S S W O R D                              #
+  #############################################################################
+  attr_accessor :password
   before_save :encrypt_password
   def encrypt_password 
     return if password.blank?
@@ -36,7 +47,14 @@ class User < ActiveRecord::Base
     self.password_confirmation = new_password
     new_password
   end
+  
+  def update_password?
+    new_record? || !password.blank?
+  end
         
+  #############################################################################
+  #                             V A L I D A T I O N                           #
+  #############################################################################
   attr_protected :admin, :password_hash, :password_salt
 
   validates_presence_of     :name
@@ -49,10 +67,5 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password,                 :if=>:update_password?
   validates_length_of       :password, :within=>6..40, :if=>:update_password?
   validates_presence_of     :password_confirmation,    :if=>:update_password?
-  
-  protected
-  def update_password?
-    new_record? || !password.blank?
-  end
   
 end
