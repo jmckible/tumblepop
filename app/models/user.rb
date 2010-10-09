@@ -39,6 +39,13 @@ class User < ActiveRecord::Base
         
   attr_protected :admin, :password_hash, :password_salt
 
+  validates_presence_of     :name
+
+  validates_presence_of     :email
+  validates_format_of       :email, :with => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/
+  validates_length_of       :email, :within => 5..100
+  validates_uniqueness_of   :email, :case_sensitive => false
+
   validates_confirmation_of :password,                 :if=>:update_password?
   validates_length_of       :password, :within=>6..40, :if=>:update_password?
   validates_presence_of     :password_confirmation,    :if=>:update_password?

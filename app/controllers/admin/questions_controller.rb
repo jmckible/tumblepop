@@ -24,7 +24,7 @@ class Admin::QuestionsController < Admin::AdminController
     render :new
   end
   
-  # PUT /admin/questions
+  # PUT /admin/questions/:id
   def update
     @question = Question.find_by_permalink! params[:id]
     @question.update_attributes! params[:question]

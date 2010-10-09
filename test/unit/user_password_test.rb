@@ -59,7 +59,7 @@ class UserPasswordTest < ActiveSupport::TestCase
   #                          L I F E C Y C L E                        #
   #####################################################################
   test 'encrypt password before save' do
-    user = User.new :email=>'new@email.com', :password=>'password1', :password_confirmation=>'password1'
+    user = User.new :email=>'new@email.com', :name=>'name', :password=>'password1', :password_confirmation=>'password1'
     assert user.save
     assert !user.password_hash.empty?
     assert !user.password_salt.empty?

@@ -1,0 +1,17 @@
+%h1= @user.name
+
+%p
+  %strong Administrator:
+  = link_to (@user.admin? ? 'Yes' : 'No'), [:toggle_admin, :admin, @user], :method=>:put
+
+= form_for [:admin, @user] do |f|
+  = render f
+  %p= f.submit 'Update'
+  
+%h2 New Password
+= form_for [:admin, @user] do |f|
+  %p New Password
+  %p= f.text_field :password
+  %p Confirm New Password
+  %p= f.text_field :password_confirmation
+  %p= f.submit 'Change Password'

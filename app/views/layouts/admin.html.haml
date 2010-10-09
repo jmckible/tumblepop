@@ -1,5 +1,12 @@
-%ul
-  %li= link_to 'Questions', admin_questions_path
-  %li= link_to 'Stories', admin_stories_path
+%html
+  %head
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+    
+  %body
+    %ul
+      %li= link_to 'Questions', admin_questions_path
+      %li= link_to 'Stories', admin_stories_path
+      %li= link_to 'Users', admin_users_path
   
-= yield
+    = yield

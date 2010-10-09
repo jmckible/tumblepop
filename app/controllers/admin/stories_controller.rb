@@ -10,7 +10,7 @@ class Admin::StoriesController < Admin::AdminController
     @story = Story.find_by_permalink! params[:id]
   end
   
-  # PUT /admin/stories
+  # PUT /admin/stories/:id
   def update
     @story = Story.find_by_permalink! params[:id]
     @story.update_attributes! params[:story]

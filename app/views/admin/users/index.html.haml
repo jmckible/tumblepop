@@ -1,0 +1,14 @@
+%h1 Users
+
+%p= link_to 'New User', new_admin_user_path
+
+%table
+  %tr
+    %th Name
+    %th Email
+  - for user in @users
+    %tr
+      %td= link_to user.name, [:admin, user]
+      %td= user.email
+      
+= will_paginate @users
