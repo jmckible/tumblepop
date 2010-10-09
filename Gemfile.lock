@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    SystemTimer (1.2)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -74,6 +75,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SystemTimer
   haml
   jquery-rails
   mysql
