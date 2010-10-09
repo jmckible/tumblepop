@@ -4,6 +4,7 @@ class Admin::AsksController < Admin::AdminController
   def create
     @ask = Ask.new params[:ask]
     @ask.save!
+    AskMailer.inquery(@ask).deliver
     redirect_to [:admin, @ask.user]
   end
   

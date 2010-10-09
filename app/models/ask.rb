@@ -20,6 +20,8 @@ class Ask < ActiveRecord::Base
     self.secret = Ask.generate_secret
   end
   
+  def from() "stories+#{secret}@tumblepop.com" end
+  
   validates_presence_of :question_id, :user_id
   
 end
