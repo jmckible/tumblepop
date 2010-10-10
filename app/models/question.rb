@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  has_permalink :prompt
+  has_permalink :prompt, :update=>true
   
   def to_param() permalink end
   

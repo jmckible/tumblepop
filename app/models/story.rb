@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  has_permalink :title
+  has_permalink :title, :update=>true
   
   belongs_to :ask
   
