@@ -1,6 +1,6 @@
 class Ask < ActiveRecord::Base
   #############################################################################
-  #                           L I F E C Y C L E                               #
+  #                             S E C R E T S                                 #
   #############################################################################
   before_validation :on=>:create do
     self.secret = Ask.generate_secret
@@ -17,6 +17,9 @@ class Ask < ActiveRecord::Base
     secret
   end
   
+  def from() "Tumblepop Stories <#{Ask.mailbox}+#{secret}@tumblepop.com>" end
+  def self.mailbox() Rails.env.development? ? 'dev' : 'stories' end
+  
   #############################################################################
   #                          R E L A T I O N S H I P S                        #
   #############################################################################
@@ -28,8 +31,6 @@ class Ask < ActiveRecord::Base
   #############################################################################
   #                             P R O C E S S I N G                           #
   #############################################################################
-  def from() "Tumblepop Stories <stories+#{secret}@tumblepop.com>" end
-    
   def process!(email, subject, body)
     if user.email == email
       story = stories.build :title=>subject, :body=>body
