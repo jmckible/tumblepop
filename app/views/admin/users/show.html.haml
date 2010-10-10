@@ -18,7 +18,9 @@
   %p
     %strong Stories:
     = number_with_delimiter @user.stories.count
-  = render :partial=>'admin/stories/stories', :object=>@user.stories
+  %ul
+    - for story in @user.stories
+      %li= link_to story.title, [:admin, story]
 
 
 = section 'Settings' do

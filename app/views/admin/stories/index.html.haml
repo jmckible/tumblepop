@@ -1,3 +1,14 @@
 %h1 Stories
 
-= render :partial=>'stories', :object=>@stories
+%table
+  %tr
+    %th User
+    %th Title
+    %th Created
+  - for story in @stories
+    %tr
+      %td= link_to story.user.name, [:admin, story.user]
+      %td= link_to story.title, [:admin, story]
+      %td= story.created_at
+      
+= will_paginate @stories
