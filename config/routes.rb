@@ -3,6 +3,7 @@ Tumblepop::Application.routes.draw do
   match 'admin'=>'admin#index'
   namespace :admin do
     resources :asks
+    resources :days
     resources :questions
     resources :stories
     

@@ -1,0 +1,15 @@
+%h1 Calendar
+
+= form_for [:admin, Day.new] do |f|
+  %p= f.date_select :date
+  %p= f.collection_select :question_id, Question.all, :id, :prompt, :include_blank=>true
+  %p= f.submit 'Add'
+
+%table
+  %tr
+    %th Date
+    %th Question
+  - for day in @days
+    %tr
+      %td= day.date
+      %td= link_to day.question.prompt, [:admin, day.question]

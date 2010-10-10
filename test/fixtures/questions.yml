@@ -1,3 +1,7 @@
 worried:
   prompt: What are you worried about?
   permalink: worried
+  
+car:
+  prompt: What was your first car?
+  permalink: car
