@@ -64,6 +64,7 @@ class AskTest < ActiveSupport::TestCase
         assert_difference 'User.count' do
           story = @ask.process! 'new@user.com', 'New Story','the body'
           assert_equal 'new@user.com', story.user.email
+          assert_equal 'new', story.user.name
         end
       end
     end

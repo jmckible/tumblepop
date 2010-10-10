@@ -52,7 +52,7 @@ class Ask < ActiveRecord::Base
           end
         end
       else
-        user = User.new :name=>email, :email=>email
+        user = User.new :name=>email.split('@').first, :email=>email
         password = user.reset_password
         if user.save
           ask = user.asks.build :question=>question
