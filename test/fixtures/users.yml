@@ -1,5 +1,5 @@
 admin:
-  email: admin@tumblepop.com
+  email: jordan+admin@tumblepop.com
   name: Admin
   admin: true
   password_hash: <%= User.encrypt 'password', 'salt' %>
@@ -12,7 +12,7 @@ jordan:
   password_salt: salt
   
 lindsey:
-  email: lindsey@thordarsen.com
+  email: jordan+other@mckible.com
   name: Lindsey
   password_hash: <%= User.encrypt 'password', 'salt' %>
   password_salt: salt
