@@ -5,7 +5,7 @@ class AskMailer < ActionMailer::Base
     @user = ask.user
     @question = ask.question
     
-    mail :from=>@ask.from, :reply_to=>@ask.from, :to=>@user.email, :subject=>@question.prompt
+    mail :from=>@ask.from, :to=>@user.email, :reply_to=>@ask.from, :subject=>@question.prompt
   end
   
 end

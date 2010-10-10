@@ -28,7 +28,7 @@ class Ask < ActiveRecord::Base
   #############################################################################
   #                             P R O C E S S I N G                           #
   #############################################################################
-  def from() "stories+#{secret}@tumblepop.com" end
+  def from() "Tumblepop Stories <stories+#{secret}@tumblepop.com>" end
     
   def process!(email, subject, body)
     if user.email == email

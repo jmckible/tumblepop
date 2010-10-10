@@ -4,9 +4,17 @@
   %p
     %strong Asks:
     = number_with_delimiter @user.asks.count
-  %ul
+  %table
+    %tr
+      %th Date
+      %th Question
+      %th &nbsp;
     - for ask in @user.asks
-      %li= link_to ask.question.prompt, [:admin, ask.question]
+      %tr
+        %td= ask.created_at
+        %td= link_to ask.question.prompt, [:admin, ask.question]
+        %td= link_to 'Send Email', [:deliver, :admin, ask], :method=>:put
+        
   = form_for [:admin, @user.asks.build] do |f|
     = f.hidden_field :user_id
     %p Ask:

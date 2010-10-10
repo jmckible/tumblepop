@@ -7,10 +7,7 @@ class AskMailerTest < ActionMailer::TestCase
     email = AskMailer.inquiry @ask
     email.deliver
     assert !ActionMailer::Base.deliveries.empty?
-    
     assert_equal [users(:jordan).email], email.to
-    assert_equal questions(:worried).prompt, email.subject
-    assert_equal [@ask.from], email.from
   end
   
 end
