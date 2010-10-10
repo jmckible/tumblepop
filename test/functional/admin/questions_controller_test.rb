@@ -22,7 +22,7 @@ class Admin::QuestionsControllerTest < ActionController::TestCase
     assert_difference('Question.count') do
       post :create, :question=>{:prompt=>'new question'}
     end
-    assert_redirected_to admin_question_path(assigns(:question))
+    assert_redirected_to admin_questions_path
   end
   
   test '/admin/questions with invalid params and POST' do

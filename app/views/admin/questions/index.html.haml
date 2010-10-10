@@ -1,6 +1,10 @@
 %h1 Questions
 
-%p= link_to 'New Question', new_admin_question_path
+= error_messages_for :question
+
+= form_for [:admin, Question.new] do |f|
+  = render f
+  %p= f.submit 'Create'
 
 %table
   %tr

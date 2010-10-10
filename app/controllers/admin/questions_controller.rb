@@ -19,8 +19,9 @@ class Admin::QuestionsController < AdminController
   def create
     @question = Question.new params[:question]
     @question.save!
-    redirect_to [:admin, @question]
+    redirect_to admin_questions_url
   rescue ActiveRecord::RecordInvalid
+    @questions = Question.all.paginate :page=>params[:page]
     render :new
   end
   
