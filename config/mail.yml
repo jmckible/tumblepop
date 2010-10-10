@@ -9,8 +9,8 @@ defaults: &defaults
   use_login: true 
   sleep_time: 30
   authentication: # LOGIN, CRAM-MD5, PASSWORD (IMAP Only)
-  processed_folder: processed
-  error_folder: failed
+  processed_folder: stories
+  error_folder: other
 
 development:
   <<: *defaults

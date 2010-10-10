@@ -10,3 +10,9 @@ jordan:
   name: Jordan McKible
   password_hash: <%= User.encrypt 'password', 'salt' %>
   password_salt: salt
+  
+lindsey:
+  email: lindsey@thordarsen.com
+  name: Lindsey
+  password_hash: <%= User.encrypt 'password', 'salt' %>
+  password_salt: salt

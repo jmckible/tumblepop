@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   #                             V A L I D A T I O N                           #
   #############################################################################
   attr_protected :admin, :password_hash, :password_salt
-
+  
   validates_presence_of     :name
 
   validates_presence_of     :email

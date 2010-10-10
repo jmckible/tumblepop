@@ -8,7 +8,6 @@ class Story < ActiveRecord::Base
   
   def to_param() permalink end
 
-  validates_presence_of   :ask_id, :title
-  validates_uniqueness_of :ask_id
+  validates_presence_of :ask_id, :title
   
 end

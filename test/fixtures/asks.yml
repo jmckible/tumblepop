@@ -2,3 +2,8 @@ jordan_worried:
   user: jordan
   question: worried
   secret: jordan-worried
+  
+lindsey_worried:
+  user: lindsey
+  question: worried
+  secret: lindsey-worried
