@@ -3,8 +3,6 @@ defaults: &defaults
   server: imap.gmail.com 
   port: 993      
   ssl: true          
-  username: stories@tumblepop.com  
-  password: x5hKV8E1Ev 
   receiver: StoryProcessor 
   use_login: true 
   sleep_time: 30
@@ -14,12 +12,10 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  # Override other values here
-  
-test:
-  <<: *defaults
-  # Override other values here
+  username: dev@tumblepop.com  
+  password: MQxMfNOdvX
   
 production:
   <<: *defaults
-  # Override other values here
+  username: stories@tumblepop.com  
+  password: x5hKV8E1Ev
