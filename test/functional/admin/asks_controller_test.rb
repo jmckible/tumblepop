@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Admin::AsksControllerTest < ActionController::TestCase
+  setup { login :admin }
   
   test '/admin/asks with POST' do
     user = users(:admin)

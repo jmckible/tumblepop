@@ -1,4 +1,4 @@
-class Admin::AsksController < Admin::AdminController
+class Admin::AsksController < AdminController
   
   # POST /admin/asks
   def create

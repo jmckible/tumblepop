@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Admin::StoriesControllerTest < ActionController::TestCase
+  setup { login :admin }
 
   test '/admin/stories with GET' do
     get :index

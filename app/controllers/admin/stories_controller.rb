@@ -1,4 +1,4 @@
-class Admin::StoriesController < Admin::AdminController
+class Admin::StoriesController < AdminController
   
   # GET /admin/stories
   def index

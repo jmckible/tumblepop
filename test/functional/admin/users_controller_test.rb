@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
-  setup { @user = users(:jordan) }
+  setup do
+    login :admin
+    @user = users(:jordan)
+  end
 
   test '/admin/users with GET' do
     get :index

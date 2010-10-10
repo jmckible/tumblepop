@@ -1,4 +1,4 @@
-class Admin::QuestionsController < Admin::AdminController
+class Admin::QuestionsController < AdminController
   
   # GET /admin/questions
   def index

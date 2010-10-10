@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Admin::QuestionsControllerTest < ActionController::TestCase
+  setup { login :admin }
 
   test '/admin/questions with GET' do
     get :index
