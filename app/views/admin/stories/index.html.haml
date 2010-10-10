@@ -5,10 +5,12 @@
     %th User
     %th Title
     %th Created
+    %th View
   - for story in @stories
     %tr
       %td= link_to story.user.name, [:admin, story.user]
       %td= link_to story.title, [:admin, story]
       %td= story.created_at
+      %td= link_to 'View', story
       
 = will_paginate @stories

@@ -3,6 +3,8 @@
 %p
   By:
   = link_to @story.user.name, [:admin, @story.user]
+  
+%p= link_to 'View', @story
 
 = form_for [:admin, @story] do |f|
   %p Title

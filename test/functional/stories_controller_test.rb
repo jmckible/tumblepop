@@ -7,4 +7,9 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test '/stories/:id with GET' do
+    get :show, :id=>stories(:jordan_worried).to_param
+    assert_response :success
+  end
+  
 end
