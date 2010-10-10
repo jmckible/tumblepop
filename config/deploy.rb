@@ -40,6 +40,14 @@ task :migrate, :roles=>:db, :only=>{:primary=>true} do
   run "cd #{directory}; #{rake} RAILS_ENV=#{rails_env} #{migrate_env} #{migrate_env} db:migrate"
 end
 
+#after 'deploy:restart', 'fetcher:restart'
+#namespace :fetcher do
+#  desc 'Restart fetcher'
+#  task :restart, :role=>:app do
+#    sudo "monit restart all -g tumblepop"
+#  end
+#end
+
 namespace :deploy do
   desc 'Restarting passenger with restart.txt'
   task :restart, :roles=>:app, :except=>{:no_release=>true} do
