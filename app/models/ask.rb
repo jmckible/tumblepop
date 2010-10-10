@@ -17,7 +17,7 @@ class Ask < ActiveRecord::Base
     secret
   end
   
-  def from() "Tumblepop Stories <#{Ask.mailbox}+#{secret}@tumblepop.com>" end
+  def from() "Tumblepop <#{Ask.mailbox}+#{secret}@tumblepop.com>" end
   def self.mailbox() Rails.env.development? ? 'dev' : 'stories' end
   
   #############################################################################
