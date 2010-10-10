@@ -56,6 +56,7 @@ class Ask < ActiveRecord::Base
         user = User.new :name=>email.split('@').first, :email=>email
         password = user.reset_password
         if user.save
+          UserMailer.welcome(user, password).deliver
           ask = user.asks.build :question=>question
           if ask.save
             story = ask.stories.build :title=>subject, :body=>body

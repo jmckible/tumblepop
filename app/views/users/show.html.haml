@@ -1,0 +1,26 @@
+%h1 Settings
+
+= error_messages_for :user
+
+= form_for @user do |f|
+  %p Name
+  %p= f.text_field :name
+  
+  %p Email
+  %p= f.text_field :email
+  
+  %p Location
+  %p= f.text_field :location
+  
+  %p= f.submit 'Update'
+  
+  
+%h2 Password
+= form_for @user do |f|
+  %p New Password
+  %p= f.password_field :password
+  
+  %p Confirm New Password
+  %p= f.password_field :password_confirmation
+  
+  %p= f.submit 'Change Password'

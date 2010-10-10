@@ -15,6 +15,7 @@ Tumblepop::Application.routes.draw do
   end
   
   resources :stories
+  resource  :user
   
   match 'login'=>'sessions#login'
   match 'logout'=>'sessions#logout'

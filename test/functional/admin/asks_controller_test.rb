@@ -11,10 +11,9 @@ class Admin::AsksControllerTest < ActionController::TestCase
     assert_redirected_to admin_user_path(user)
   end
   
-  # This email was getting delivered
-  # test '/admin/asks/:id/deliver with PUT' do
-  #   put :deliver, :id=>asks(:jordan_worried)
-  #   assert_redirected_to admin_user_path(users(:jordan))
-  # end
+  test '/admin/asks/:id/deliver with PUT' do
+    put :deliver, :id=>asks(:jordan_worried)
+    assert_redirected_to admin_user_path(users(:jordan))
+  end
   
 end
