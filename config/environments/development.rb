@@ -23,17 +23,23 @@ Tumblepop::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
-  config.action_mailer.default_url_options = {:host=>'tumblepop.local', :port=>3000}
+  config.action_mailer.default_url_options = {:host=>'tumblepop.local'}
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
-    :domain               => 'tumblepop.com',
-    :user_name            => 'dev@tumblepop.com',
-    :password             => 'MQxMfNOdvX',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  
+    #:address              => 'smtp.gmail.com',
+    #:port                 => 587,
+    #:domain               => 'tumblepop.com',
+    #:user_name            => 'dev@tumblepop.com',
+    #:password             => 'MQxMfNOdvX',
+    #:authentication       => 'plain',
+    #:enable_starttls_auto => true
+    
+    :address        => 'mail.tumblepop.com',
+    :port           => 25,
+    :domain         => 'tumblepop.com',
+    :user_name      => 'dev',
+    :password       => 'cVDbVKOj',
+    :authentication => :login
   }
 end
-
