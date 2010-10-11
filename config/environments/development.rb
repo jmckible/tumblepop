@@ -41,5 +41,6 @@ Tumblepop::Application.configure do
     :user_name      => 'dev',
     :password       => 'cVDbVKOj',
     :authentication => :login
+    
   }
 end

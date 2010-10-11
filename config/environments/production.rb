@@ -62,8 +62,8 @@ Tumblepop::Application.configure do
     :address        => 'mail.tumblepop.com',
     :port           => 25,
     :domain         => 'tumblepop.com',
-    :user_name      => 'stories',
-    :password       => 'x5hKV8E1Ev',
+    :user_name      => 'dev',
+    :password       => 'cVDbVKOj',
     :authentication => :login
   }
 end
