@@ -1,0 +1,8 @@
+jordan_lindsey:
+  writer: jordan
+  reader: lindsey
+  
+admin_jordan:
+  writer: admin
+  reader: jordan
+  allowed: false

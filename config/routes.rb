@@ -7,6 +7,9 @@ Tumblepop::Application.routes.draw do
     end
     resources :days
     resources :questions
+    resources :reads do
+      put :toggle, :on=>:member
+    end
     resources :stories
     
     resources :users do

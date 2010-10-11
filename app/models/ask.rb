@@ -35,37 +35,40 @@ class Ask < ActiveRecord::Base
     if user.email == email
       story = stories.build :title=>subject, :body=>body
       story.save
-      story
     else
-      user = User.find_by_email email
-      if user
-        ask = user.asks.find_by_question_id question.id
+      writer = User.find_by_email email
+      if writer
+        ask = writer.asks.find_by_question_id question.id
         if ask
           story = ask.stories.build :title=>subject, :body=>body
           story.save
-          story
         else
-          ask = user.asks.build :question=>question
+          ask = writer.asks.build :question=>question
           if ask.save
             story = ask.stories.build :title=>subject, :body=>body
             story.save
-            story
           end
         end
       else
-        user = User.new :name=>email.split('@').first, :email=>email
-        password = user.reset_password
-        if user.save
-          UserMailer.welcome(user, password).deliver
-          ask = user.asks.build :question=>question
+        writer = User.new :name=>email.split('@').first, :email=>email
+        password = writer.reset_password
+        if writer.save
+          UserMailer.welcome(writer, password).deliver
+          ask = writer.asks.build :question=>question
           if ask.save
             story = ask.stories.build :title=>subject, :body=>body
             story.save
-            story
           end
         end
       end
     end
+    
+    if writer
+      user.reads writer
+      writer.reads user
+    end
+    
+    story
   end
   
   #############################################################################

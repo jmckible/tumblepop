@@ -36,15 +36,19 @@ class AskTest < ActiveSupport::TestCase
   #############################################################################
   test 'new story from expected user' do
     assert_difference 'Story.count' do
-      story = @ask.process! users(:jordan).email, 'New Story','the body'
+      assert_no_difference 'Read.count' do
+        story = @ask.process! users(:jordan).email, 'New Story','the body'
+      end
     end
   end
   
   test 'new story from another known user with ask' do
     assert_difference 'Story.count' do
       assert_no_difference 'Ask.count' do
-        story = @ask.process! users(:lindsey).email, 'New Story','the body'
-        assert_equal users(:lindsey), story.user
+        assert_difference 'Read.count' do # jordan now reads lindsey
+          story = @ask.process! users(:lindsey).email, 'New Story','the body'
+          assert_equal users(:lindsey), story.user
+        end
       end
     end
   end
@@ -52,8 +56,10 @@ class AskTest < ActiveSupport::TestCase
   test 'new story from another known user without ask' do
     assert_difference 'Story.count' do
       assert_difference 'Ask.count' do
-        story = @ask.process! users(:admin).email, 'New Story','the body'
-        assert_equal users(:admin), story.user
+        assert_difference 'Read.count' do # admin now reads jordan
+          story = @ask.process! users(:admin).email, 'New Story','the body'
+          assert_equal users(:admin), story.user
+        end
       end
     end
   end
@@ -62,9 +68,11 @@ class AskTest < ActiveSupport::TestCase
     assert_difference 'Story.count' do
       assert_difference 'Ask.count' do
         assert_difference 'User.count' do
-          story = @ask.process! 'jordan+new@mckible.com', 'New Story','the body'
-          assert_equal 'jordan+new@mckible.com', story.user.email
-          assert_equal 'jordan+new', story.user.name
+          assert_difference 'Read.count', 2 do
+            story = @ask.process! 'jordan+new@mckible.com', 'New Story','the body'
+            assert_equal 'jordan+new@mckible.com', story.user.email
+            assert_equal 'jordan+new', story.user.name
+          end
         end
       end
     end

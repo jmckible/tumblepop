@@ -29,6 +29,24 @@
   %ul
     - for story in @user.stories
       %li= link_to story.title, [:admin, story]
+      
+= section 'Readers' do
+  %p
+    %strong Reads:
+    = number_with_delimiter @user.readerships.count
+    
+  %p
+    %strong Audience of Readers:
+    = number_with_delimiter @user.writerships.count
+    
+  %table
+    %tr
+      %th User
+      %th Allowed
+    - for read in @user.writerships
+      %tr
+        %td= link_to read.reader.name, [:admin, read.reader]
+        %td= link_to (read.allowed? ? 'Yes' : 'No'), [:toggle, :admin, read], :method=>:put
 
 
 = section 'Settings' do

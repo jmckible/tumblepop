@@ -30,6 +30,15 @@ class User < ActiveRecord::Base
   has_many :asks
   has_many :stories, :through=>:asks
   
+  has_many :readerships, :class_name=>'Read', :foreign_key=>:reader_id
+  has_many :writerships, :class_name=>'Read', :foreign_key=>:writer_id
+  
+  def reads(user)
+    read = readerships.find_or_create_by_writer_id user.id
+    read.toggle!(:allowed) unless read.allowed?
+    read
+  end
+  
   #############################################################################
   #                              P A S S W O R D                              #
   #############################################################################
