@@ -1,0 +1,11 @@
+.story
+  %h1= story.title
+  .byline
+    %p.date= story.created_at.strftime '%B %e, %Y'
+    %p= story.user.name
+    %p= story.user.location
+    
+
+  = simple_format truncate(story.body, :length=>200)
+  
+  .more= link_to 'Read More', story

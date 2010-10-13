@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   
   # GET /
   def index
-    @stories = Story.all.paginate :page=>params[:page]
+    @stories = Story.newest.paginate :page=>params[:page]
   end
   
   # GET /stories/:id

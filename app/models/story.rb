@@ -3,6 +3,8 @@ class Story < ActiveRecord::Base
   
   belongs_to :ask
   
+  scope :newest, order('created_at desc')
+  
   delegate :question, :to=>:ask
   delegate :user,     :to=>:ask
   
